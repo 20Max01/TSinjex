@@ -45,7 +45,7 @@
     "eslint-plugin-override": "https://github.com/PxaMMaxP/eslint-plugin-override",
     "jest": "^29.7.0",
     "ts-jest": "^29.2.3",
-    "typedoc": "^0.26.5",
+    "typedoc": "^0.26.11",
     "istanbul-badges-readme": "^1.9.0",
     "axios": "^1.7.2"
   },
