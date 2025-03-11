@@ -1,4 +1,4 @@
-import { TSinjex } from '../classes/TSinjex';
+import { Register } from './Register';
 import { Identifier } from '../types/Identifier';
 import { InitDelegate } from '../types/InitDelegate';
 
@@ -9,6 +9,8 @@ import { InitDelegate } from '../types/InitDelegate';
  * @see {@link Identifier} for more information on identifiers.
  * @param init An optional initializer function which get the constructor of the class
  * as input and returns an instance of the class.
+ * @param deprecated If true, the dependency is deprecated and a warning
+ * is logged only once upon the first resolution of the dependency.
  * @see {@link InitDelegate} for more information on initializer functions.
  * @returns The decorator function to be applied on the class.
  * @example
@@ -18,6 +20,7 @@ import { InitDelegate } from '../types/InitDelegate';
  *   // ...
  * }
  * ```
+ * @deprecated Use {@link Register} instead. This decorator already uses the {@link Register} decorator internally.
  */
 export function RegisterInstance<
     TargetType extends new (..._args: unknown[]) => InstanceType<TargetType>,
@@ -27,47 +30,10 @@ export function RegisterInstance<
         TargetType & { new (..._args: unknown[]): InstanceType<TargetType> },
         InstanceType<TargetType>
     >,
-) {
-    return function (constructor: TargetType, ...args: unknown[]): void {
-        // Get the instance of the DI container
-        const diContainer = TSinjex.getInstance();
-        let instance: InstanceType<TargetType>;
+    deprecated?: boolean,
+): (constructor: TargetType, ...args: unknown[]) => void {
+    const initDelegate = typeof init === 'function' ? init : undefined;
 
-        // Create a proxy to instantiate the class when needed (Lazy Initialization)
-        let lazyProxy: unknown = new Proxy(
-            {},
-            {
-                get(target, prop, receiver) {
-                    if (instance == null) {
-                        if (init) {
-                            instance = init(constructor);
-                        } else {
-                            instance = new constructor(...args);
-                        }
-                    }
-                    lazyProxy = instance;
-
-                    // Return the requested property of the instance
-                    return instance[prop as keyof InstanceType<TargetType>];
-                },
-                set(target, prop, value, receiver) {
-                    if (instance == null) {
-                        if (init) {
-                            instance = init(constructor);
-                        } else {
-                            instance = new constructor(...args);
-                        }
-                    }
-                    lazyProxy = instance;
-
-                    // Set the requested property of the instance
-                    return (instance[prop as keyof InstanceType<TargetType>] =
-                        value);
-                },
-            },
-        );
-
-        // Register the lazy proxy in the DI container
-        diContainer.register(identifier, lazyProxy);
-    };
+    if (initDelegate) return Register(identifier, initDelegate, deprecated);
+    else return Register(identifier, 'instance', deprecated);
 }
