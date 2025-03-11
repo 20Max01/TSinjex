@@ -9,6 +9,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+
+### Deprecated
+
+
+### Removed
+
+
+### Fixed
+
+
+### Security
+
+
+## [0.2.0]
+
+### Added
+
 - Add pre release building to release workflow on dev/* branches an version changes.
 - feat: Introduced a new CLI command `tsinjex-generate` to automate the generation of import statements for registered dependencies.  
   The command scans `.ts` files for `@Register` and `@RegisterInstance` decorators and generates an `auto-imports.ts` file.  
@@ -26,7 +43,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 
 ### Security
-
 
 ## [0.0.14]
 
@@ -60,3 +76,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 [unreleased]: https://github.com/PxaMMaxP/TSinjex/compare/0.0.14...HEAD
 [0.0.14]: https://github.com/PxaMMaxP/TSinjex/compare/0.0.13...v0.0.14
+[0.2.00]: https://github.com/PxaMMaxP/TSinjex/compare/0.0.14...v0.2.0
