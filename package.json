@@ -5,6 +5,9 @@
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "bin": {
+    "tsinjex-generate": "./bin/generate-imports.cjs"
+  },
   "scripts": {
     "prepare": "npm run build",
     "build": "npm run build:tsc",
