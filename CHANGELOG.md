@@ -9,7 +9,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Add pre release building to release workflow on dev/* branches an version changes.
+- refactor: consolidate registration decorators
+  Introduced Register decorator to handle class and instance registration in the DI container.
+  Deprecated RegisterInstance in favor of Register, which now internally handles instance registration.
+  Added support for marking dependencies as deprecated with a warning logged upon first resolution.
+  Updated documentation with examples and notes on deprecation.
+- tests: add mode parameter to RegisterInstanceDecorator
+  Introduced a mode parameter to the test_RegisterInstanceDecorator function allowing 'instance' or 'standalone' modes.
+  Updated test cases to utilize the new mode parameter when registering an instance.
+  Disabled specific ESLint rule in Decorators.test.ts for deprecation warnings.
+  Added an additional test call to test_RegisterInstanceDecorator with 'instance' mode.
 
 
 ### Deprecated
