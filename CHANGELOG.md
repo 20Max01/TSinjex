@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   Updated test cases to utilize the new mode parameter when registering an instance.
   Disabled specific ESLint rule in Decorators.test.ts for deprecation warnings.
   Added an additional test call to test_RegisterInstanceDecorator with 'instance' mode.
+- refactor: add region tags for overloads in Register.ts
 
 
 ### Deprecated
