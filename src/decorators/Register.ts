@@ -2,6 +2,8 @@ import { InitDelegate } from 'src/types/InitDelegate';
 import { TSinjex } from '../classes/TSinjex';
 import { Identifier } from '../types/Identifier';
 
+//#region Overloads
+
 /**
  * A decorator to register a class in the **TSinjex** DI (Dependency Injection) container.
  * @template TargetType The type of the class to be registered.
@@ -101,6 +103,8 @@ export function Register<
     >,
     deprecated?: boolean,
 ): (constructor: TargetType, ...args: unknown[]) => void;
+
+//#endregion Overloads
 
 // eslint-disable-next-line jsdoc/require-jsdoc
 export function Register<
