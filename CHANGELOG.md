@@ -91,5 +91,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 [unreleased]: https://github.com/20Max01/TSinjex/compare/0.0.14...HEAD
 [0.0.14]: https://github.com/20Max01/TSinjex/compare/0.0.13...v0.0.14
-[0.2.0]: https://github.com/20Max01/TSinjex/compare/0.0.14...v0.2.0
-[0.3.0]: https://github.com/20Max01/TSinjex/compare/0.2.0...v0.3.0
+[0.2.0]: https://github.com/20Max01/TSinjex/compare/v0.0.14...v0.2.0
+[0.3.0]: https://github.com/20Max01/TSinjex/compare/v0.2.0...v0.3.0
