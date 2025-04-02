@@ -17,6 +17,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Security
 
+## [1.2.0]
+
+### Added
+
+-   docs: added complete Typedoc-style documentation for all `inject()` overloads  
+    Includes parameter descriptions, usage examples, and detailed error annotations for each variant.
+
 ## [1.1.0]
 
 ### Added
@@ -140,6 +147,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ---
 
 [unreleased]: https://github.com/20Max01/TSinjex/compare/v1.0.0...HEAD
+[1.1.0]: https://github.com/20Max01/TSinjex/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/20Max01/TSinjex/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/20Max01/TSinjex/compare/v0.4.0...v1.0.0
 [0.4.0]: https://github.com/20Max01/TSinjex/compare/v0.3.0...v0.4.0
