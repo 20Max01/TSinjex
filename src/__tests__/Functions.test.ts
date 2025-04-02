@@ -10,3 +10,4 @@ import { resolve } from '../functions/resolve.js';
 
 test_RegisterFunction(TSinjex, register);
 test_ResolveFunction(TSinjex, resolve);
+test_injectFunction(TSinjex, inject);
