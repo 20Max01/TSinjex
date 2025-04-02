@@ -24,21 +24,27 @@ const argv = yargs
     description: 'File pattern to search for (e.g., .ts, .js)',
     default: '.ts',
   })
+  .option('without-extension', {
+    alias: 'x',
+    type: 'boolean',
+    description: 'Omit file extension in import paths',
+    default: false,
+  })
   .help()
   .argv;
 
 // Fixed RegEx patterns for decorator detection
 const SEARCH_PATTERNS = [
-  /^@Register(?:<(.+)?>)?\(\s*["']{1}(.+)?["']{1}\s*,?\s*(true|false)?\s*\)/m, // Matches @Register(...)
-  /^@RegisterInstance(?:<(.+)?>)?\(\s*["']{1}(.+)?["']{1}\s*,?\s*(.+)?\s*\)/m, // Matches @RegisterInstance(...)
+  /^@Register(?:<(.+)?>)?\(\s*["']{1}(.+)?["']{1}\s*,?\s*(true|false)?\s*\)/m,
+  /^@RegisterInstance(?:<(.+)?>)?\(\s*["']{1}(.+)?["']{1}\s*,?\s*(.+)?\s*\)/m,
 ];
 
-const FILE_PATTERN = argv.pattern.startsWith('.') ? argv.pattern : `.${argv.pattern}`; // Ensure the pattern starts with a dot
+const FILE_PATTERN = argv.pattern.startsWith('.') ? argv.pattern : `.${argv.pattern}`;
 
 /**
- * Recursively searches for all files in a directory matching the specified pattern.
- * @param {string} dirPath - The directory to search.
- * @returns {string[]} - List of matching files.
+ * Recursively collects all files with a specific extension.
+ * @param {string} dirPath - Root directory
+ * @returns {string[]} List of file paths
  */
 function getAllFiles(dirPath) {
   let files = fs.readdirSync(dirPath);
@@ -57,9 +63,9 @@ function getAllFiles(dirPath) {
 }
 
 /**
- * Filters files that contain at least one of the specified regex patterns.
- * @param {string[]} files - List of files to check.
- * @returns {string[]} - Files that contain at least one of the specified patterns.
+ * Checks files for decorator usage.
+ * @param {string[]} files
+ * @returns {string[]} Filtered files
  */
 function findFilesWithPattern(files) {
   return files.filter((file) => {
@@ -69,16 +75,21 @@ function findFilesWithPattern(files) {
 }
 
 /**
- * Generates an import file containing imports for all found files.
- * @param {string[]} files - List of relevant files.
- * @returns {string} - Generated import code.
+ * Generates ES-style import statements from file paths.
+ * @param {string[]} files
+ * @returns {string}
  */
 function generateImports(files) {
-  return files.map((file) => `import '${file.replace(/\\/g, '/')}';`).join('\n') + '\n';
+  return files.map((file) => {
+    const relative = './' + path.relative(argv.src, file).replace(/\\/g, '/');
+    const noExt = relative.replace(FILE_PATTERN, '');
+    const finalPath = argv['without-extension'] ? noExt : `${noExt}${FILE_PATTERN}`;
+    return `import '${finalPath}';`;
+  }).join('\n') + '\n';
 }
 
 /**
- * Main function that executes the script.
+ * Script entry point.
  */
 function main() {
   try {
