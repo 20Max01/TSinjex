@@ -17,7 +17,7 @@ import { InitDelegate } from '../types/InitDelegate.js';
  * @param init Optional an initializer function to transform the dependency before injection
  * or true to instantiate the dependency if it has a constructor.
  * @see {@link InitDelegate} for more information on initializer functions.
- * @param necessary If true, throws an error if the dependency is not found.
+ * @param isNecessary If true, throws an error if the dependency is not found.
  * @returns The resolved dependency or undefined if the dependency is not necessary
  * and not found, or throws an error if the dependency is necessary and not found.
  * @throws **Only throws errors if the dependency is necessary.**
@@ -43,7 +43,7 @@ import { InitDelegate } from '../types/InitDelegate.js';
 export function Inject<T, U>(
     identifier: Identifier,
     init?: InitDelegate<T, U> | true,
-    necessary = true,
+    isNecessary = true,
 ) {
     return function (target: unknown, propertyKey: string | symbol): void {
         /**
@@ -52,7 +52,7 @@ export function Inject<T, U>(
          * @returns The resolved dependency or undefined if the dependency is not found.
          */
         const resolve = (): T | undefined => {
-            return TSinjex.getInstance().resolve<T>(identifier, necessary);
+            return TSinjex.getInstance().resolve<T>(identifier, isNecessary);
         };
 
         Object.defineProperty(target, propertyKey, {
@@ -61,7 +61,7 @@ export function Inject<T, U>(
 
                 const dependency: T | undefined = tryAndCatch(
                     () => resolve(),
-                    necessary,
+                    isNecessary,
                     identifier,
                     DependencyResolutionError,
                 );
@@ -78,13 +78,13 @@ export function Inject<T, U>(
                     else if (initFunction != null)
                         instance = tryAndCatch(
                             initFunction,
-                            necessary,
+                            isNecessary,
                             identifier,
                             InitializationError,
                         );
-                    else if (necessary)
+                    else if (isNecessary)
                         throw new NoInstantiationMethodError(identifier);
-                } else if (necessary)
+                } else if (isNecessary)
                     throw new DependencyResolutionError(identifier);
 
                 /**
