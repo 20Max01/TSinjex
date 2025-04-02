@@ -1,6 +1,11 @@
 /* istanbul ignore file */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { ITSinjex, ITSinjex_ } from 'src/interfaces/ITSinjex.js';
+import {
+    DependencyResolutionError,
+    InitializationError,
+    NoInstantiationMethodError,
+} from '../interfaces/Exceptions.js';
+import { ITSinjex, ITSinjex_ } from '../interfaces/ITSinjex.js';
 
 export function test_RegisterFunction(
     Container: ITSinjex_,
