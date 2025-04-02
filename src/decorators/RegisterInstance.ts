@@ -1,6 +1,6 @@
-import { Register } from './Register';
-import { Identifier } from '../types/Identifier';
-import { InitDelegate } from '../types/InitDelegate';
+import { Register } from './Register.js';
+import { Identifier } from '../types/Identifier.js';
+import { InitDelegate } from '../types/InitDelegate.js';
 
 /**
  * A decorator to register an instance of a class in the DI (Dependency Injection) container.

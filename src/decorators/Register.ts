@@ -1,6 +1,6 @@
-import { InitDelegate } from 'src/types/InitDelegate';
-import { TSinjex } from '../classes/TSinjex';
-import { Identifier } from '../types/Identifier';
+import { InitDelegate } from 'src/types/InitDelegate.js';
+import { TSinjex } from '../classes/TSinjex.js';
+import { Identifier } from '../types/Identifier.js';
 
 //#region Overloads
 

@@ -1,5 +1,5 @@
-import { TSinjex } from '../classes/TSinjex';
-import { Identifier } from '../types/Identifier';
+import { TSinjex } from '../classes/TSinjex.js';
+import { Identifier } from '../types/Identifier.js';
 
 /**
  * Register a dependency.
