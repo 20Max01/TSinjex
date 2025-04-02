@@ -1,5 +1,5 @@
 /* istanbul ignore file */
-import { ITSinjex_, ITSinjex } from '../interfaces/ITSinjex';
+import { ITSinjex_, ITSinjex } from '../interfaces/ITSinjex.js';
 
 /**
  * Test the implementation of the `ITSinjex` interface.

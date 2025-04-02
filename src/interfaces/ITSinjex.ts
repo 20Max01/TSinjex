@@ -1,5 +1,5 @@
-import { DependencyResolutionError } from './Exceptions';
-import { Identifier } from '../types/Identifier';
+import { DependencyResolutionError } from './Exceptions.js';
+import { Identifier } from '../types/Identifier.js';
 
 /**
  * Static TSInjex Interface

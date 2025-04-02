@@ -1,5 +1,5 @@
-import { Identifier } from 'src/types/Identifier';
-import { ITSinjex } from './ITSinjex';
+import { Identifier } from 'src/types/Identifier.js';
+import { ITSinjex } from './ITSinjex.js';
 
 /**
  * General error class for {@link ITSinjex} interface.

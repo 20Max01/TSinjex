@@ -1,13 +1,13 @@
 /* eslint-disable deprecation/deprecation */
-import { TSinjex } from 'src/classes/TSinjex';
-import { Inject } from 'src/decorators/Inject';
-import { Register } from 'src/decorators/Register';
-import { RegisterInstance } from 'src/decorators/RegisterInstance';
+import { TSinjex } from 'src/classes/TSinjex.js';
+import { Inject } from 'src/decorators/Inject.js';
+import { Register } from 'src/decorators/Register.js';
+import { RegisterInstance } from 'src/decorators/RegisterInstance.js';
 import {
     test_InjectDecorator,
     test_RegisterDecorator,
     test_RegisterInstanceDecorator,
-} from './Decorators.spec';
+} from './Decorators.spec.js';
 
 test_InjectDecorator(TSinjex, Inject);
 

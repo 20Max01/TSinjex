@@ -1,13 +1,13 @@
-import type { Inject } from '../decorators/Inject';
-import type { Register } from '../decorators/Register';
-import type { RegisterInstance } from '../decorators/RegisterInstance';
-import type { register } from '../functions/register';
-import type { resolve } from '../functions/resolve';
-import { ImplementsStatic } from '../helper/ImplementsStatic';
-import { DependencyResolutionError } from '../interfaces/Exceptions';
-import { IDependency } from '../interfaces/IDependency';
-import { ITSinjex, ITSinjex_ } from '../interfaces/ITSinjex';
-import { Identifier } from '../types/Identifier';
+import type { Inject } from '../decorators/Inject.js';
+import type { Register } from '../decorators/Register.js';
+import type { RegisterInstance } from '../decorators/RegisterInstance.js';
+import type { register } from '../functions/register.js';
+import type { resolve } from '../functions/resolve.js';
+import { ImplementsStatic } from '../helper/ImplementsStatic.js';
+import { DependencyResolutionError } from '../interfaces/Exceptions.js';
+import { IDependency } from '../interfaces/IDependency.js';
+import { ITSinjex, ITSinjex_ } from '../interfaces/ITSinjex.js';
+import { Identifier } from '../types/Identifier.js';
 
 /**
  * # TSinjex

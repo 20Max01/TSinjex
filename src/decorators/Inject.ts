@@ -1,12 +1,12 @@
+import { TSinjex } from '../classes/TSinjex.js';
 import {
     DependencyResolutionError,
     InitializationError,
     InjectorError,
     NoInstantiationMethodError,
-} from 'src/interfaces/Exceptions';
-import { TSinjex } from '../classes/TSinjex';
-import { Identifier } from '../types/Identifier';
-import { InitDelegate } from '../types/InitDelegate';
+} from '../interfaces/Exceptions.js';
+import { Identifier } from '../types/Identifier.js';
+import { InitDelegate } from '../types/InitDelegate.js';
 
 /**
  * A decorator to inject a dependency from a DI (Dependency Injection) container into a class property.

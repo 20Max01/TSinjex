@@ -1,6 +1,6 @@
-import { TSinjex } from '../classes/TSinjex';
-import { DependencyResolutionError } from '../interfaces/Exceptions';
-import { Identifier } from '../types/Identifier';
+import { TSinjex } from '../classes/TSinjex.js';
+import { DependencyResolutionError } from '../interfaces/Exceptions.js';
+import { Identifier } from '../types/Identifier.js';
 
 /**
  * Resolve a dependency.
