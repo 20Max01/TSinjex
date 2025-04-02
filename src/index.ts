@@ -14,6 +14,7 @@ export * from './helper/ImplementsStatic.js';
 // Functions
 export * from './functions/resolve.js';
 export * from './functions/register.js';
+export * from './functions/inject.js';
 
 // Interfaces & Types
 export type * from './interfaces/ITSinjex.js';
