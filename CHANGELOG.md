@@ -25,10 +25,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -   feat: All internal imports now explicitly include `.js` extensions for full Node.js ESM compatibility.
 -   feat: Updated `tsconfig.json` to reflect changes for ESM builds (`module: "NodeNext"`, `target: "ES2020"`, etc.).
 -   feat(cli): add `--without-extension` (`-x`) flag to optionally omit file extensions in generated import paths
+-   feat: introduce `inject()` function as a programmatic alternative to the `@Inject` decorator  
+    Supports optional initializers and constructor instantiation for resolved dependencies.  
+    Designed for cases where decorators are not suitable or dynamic resolution is needed.
+-   test: added comprehensive test suite for `inject()` function, covering resolution, initialization, error cases and instantiation behavior
 
 ### Changed
 
 -   All source files using relative or internal imports were updated to use `.js` extensions to support Node.js ESM runtime resolution.
+-   test: update Jest config for ts-jest ESM compatibility and .js import support
+-   renamed internal parameter `necessary` → `isNecessary` for naming clarity
 
 ### Removed
 
