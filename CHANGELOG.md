@@ -17,6 +17,41 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Security
 
+## [1.0.0]
+
+### Added
+
+-   feat: Enable native ESM support using `"type": "module"` and `moduleResolution: "NodeNext"` in the compiler settings.
+-   feat: All internal imports now explicitly include `.js` extensions for full Node.js ESM compatibility.
+-   feat: Updated `tsconfig.json` to reflect changes for ESM builds (`module: "NodeNext"`, `target: "ES2020"`, etc.).
+-   feat(cli): add `--without-extension` (`-x`) flag to optionally omit file extensions in generated import paths
+
+### Changed
+
+-   All source files using relative or internal imports were updated to use `.js` extensions to support Node.js ESM runtime resolution.
+
+### Removed
+
+-   Removed implicit support for CommonJS-style imports without file extensions.
+
+### Deprecated
+
+-   Support for CommonJS consumers using `require()` is no longer available. Use `import` with an ESM-compatible environment instead.
+
+### Fixed
+
+### Security
+
+### ⚠️ Breaking Changes
+
+-   **BREAKING CHANGE**: This version migrates the entire codebase to native ES modules.
+    -   Consumers must use Node.js in ESM mode or compatible bundlers.
+    -   Import paths now include `.js` extensions.
+    -   Using `require()` (CommonJS) to load this library will no longer work.
+    -   All consuming projects must either:
+        -   Use `"type": "module"` in their `package.json`, or
+        -   Use an ESM-aware bundler (e.g. Webpack, Vite, etc.)
+
 ## [0.4.0]
 
 ### Added
@@ -91,8 +126,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-[unreleased]: https://github.com/20Max01/TSinjex/compare/0.0.14...HEAD
-[0.0.14]: https://github.com/20Max01/TSinjex/compare/0.0.13...v0.0.14
-[0.2.0]: https://github.com/20Max01/TSinjex/compare/v0.0.14...v0.2.0
-[0.3.0]: https://github.com/20Max01/TSinjex/compare/v0.2.0...v0.3.0
+[unreleased]: https://github.com/20Max01/TSinjex/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/20Max01/TSinjex/compare/v0.4.0...v1.0.0
 [0.4.0]: https://github.com/20Max01/TSinjex/compare/v0.3.0...v0.4.0
+[0.3.0]: https://github.com/20Max01/TSinjex/compare/v0.2.0...v0.3.0
+[0.2.0]: https://github.com/20Max01/TSinjex/compare/v0.0.14...v0.2.0
+[0.0.14]: https://github.com/20Max01/TSinjex/compare/v0.0.13...v0.0.14
