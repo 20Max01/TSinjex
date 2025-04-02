@@ -30,9 +30,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">87.09% </span>
+                <span class="strong">88% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>27/31</span>
+                <span class='fraction'>22/25</span>
             </div>
         
             
@@ -215,12 +215,12 @@
 <a name='L150'></a><a href='#L150'>150</a>
 <a name='L151'></a><a href='#L151'>151</a>
 <a name='L152'></a><a href='#L152'>152</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -365,15 +365,15 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import {
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { TSinjex } from '../classes/TSinjex.js';
+import {
     DependencyResolutionError,
     InitializationError,
     InjectorError,
     NoInstantiationMethodError,
-} from 'src/interfaces/Exceptions';
-import { TSinjex } from '../classes/TSinjex';
-import { Identifier } from '../types/Identifier';
-import { InitDelegate } from '../types/InitDelegate';
+} from '../interfaces/Exceptions.js';
+import { Identifier } from '../types/Identifier.js';
+import { InitDelegate } from '../types/InitDelegate.js';
 &nbsp;
 /**
  * A decorator to inject a dependency from a DI (Dependency Injection) container into a class property.
@@ -384,7 +384,7 @@ import { InitDelegate } from '../types/InitDelegate';
  * @param init Optional an initializer function to transform the dependency before injection
  * or true to instantiate the dependency if it has a constructor.
  * @see {@link InitDelegate} for more information on initializer functions.
- * @param necessary If true, throws an error if the dependency is not found.
+ * @param isNecessary If true, throws an error if the dependency is not found.
  * @returns The resolved dependency or undefined if the dependency is not necessary
  * and not found, or throws an error if the dependency is necessary and not found.
  * @throws **Only throws errors if the dependency is necessary.**
@@ -410,7 +410,7 @@ import { InitDelegate } from '../types/InitDelegate';
 export function Inject&lt;T, U&gt;(
     identifier: Identifier,
     init?: InitDelegate&lt;T, U&gt; | true,
-    necessary = true,
+    isNecessary = true,
 ) {
     return function (target: unknown, propertyKey: string | symbol): void {
         /**
@@ -419,7 +419,7 @@ export function Inject&lt;T, U&gt;(
          * @returns The resolved dependency or undefined if the dependency is not found.
          */
         const resolve = (): T | undefined =&gt; {
-            return TSinjex.getInstance().resolve&lt;T&gt;(identifier, necessary);
+            return TSinjex.getInstance().resolve&lt;T&gt;(identifier, isNecessary);
         };
 &nbsp;
         Object.defineProperty(target, propertyKey, {
@@ -428,7 +428,7 @@ export function Inject&lt;T, U&gt;(
 &nbsp;
                 const dependency: T | undefined = tryAndCatch(
                     () =&gt; resolve(),
-                    necessary,
+                    isNecessary,
                     identifier,
                     DependencyResolutionError,
                 );
@@ -445,13 +445,13 @@ export function Inject&lt;T, U&gt;(
                     else if (initFunction != null)
                         instance = tryAndCatch(
                             initFunction,
-                            necessary,
+                            isNecessary,
                             identifier,
                             InitializationError,
                         );
-                    else if (necessary)
+                    else if (isNecessary)
                         throw new NoInstantiationMethodError(identifier);
-                } else if (necessary)
+                } else if (isNecessary)
                     throw new DependencyResolutionError(identifier);
 &nbsp;
                 /**
@@ -512,7 +512,7 @@ function hasConstructor&lt;T&gt;(obj: T): obj is T &amp; { new (): unknown } {
     const _obj = obj as unknown as { prototype?: { constructor?: unknown } };
 &nbsp;
     return (
-        _obj<span class="branch-0 cbranch-no" title="branch not covered" >?.p</span>rototype != null &amp;&amp;
+        _obj?.prototype != null &amp;&amp;
         typeof _obj.prototype.constructor === 'function'
     );
 }
@@ -523,7 +523,7 @@ function hasConstructor&lt;T&gt;(obj: T): obj is T &amp; { new (): unknown } {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="./https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-04-02T18:22:41.239Z
+                at 2025-04-02T19:53:14.343Z
             </div>
         <script src="../prettify.js"></script>
         <script>
