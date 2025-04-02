@@ -17,6 +17,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Security
 
+## [1.1.0]
+
+### Added
+
+-   feat: exported `inject()` function from the public API via `index.ts`  
+    The function is now available as part of the main module exports.
+
 ## [1.0.0]
 
 ### Added
@@ -133,6 +140,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ---
 
 [unreleased]: https://github.com/20Max01/TSinjex/compare/v1.0.0...HEAD
+[1.1.0]: https://github.com/20Max01/TSinjex/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/20Max01/TSinjex/compare/v0.4.0...v1.0.0
 [0.4.0]: https://github.com/20Max01/TSinjex/compare/v0.3.0...v0.4.0
 [0.3.0]: https://github.com/20Max01/TSinjex/compare/v0.2.0...v0.3.0
