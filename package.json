@@ -1,6 +1,6 @@
 {
   "name": "ts-injex",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Simple boilerplate code free dependency injection system for TypeScript.",
   "type": "module",
   "main": "./dist/index.js",
